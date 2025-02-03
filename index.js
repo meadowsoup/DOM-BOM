@@ -18,12 +18,17 @@ document.addEventListener("DOMContentLoaded", () => {
      // creating an empty paragraph[p] to display game messages!
      const message = document.createElement("p")
      message.setAttribute("id", "message"); // assign an ID for selections
+
+     // creating an element for the guesses
+     const guesses = document.createElement("p")
+     guessList.innerHTML = `Guesses: <span id="guessHistory"> None </span>`;
      
      // adding these elements to the div container inside the HTML!
      app.appendChild(title);
      app.appendChild(instructions);
      app.appendChild(startButton);
      app.appendChild(message);
+     app.appendChild(guesses)
      
      // attaching an event listener to the "start button" to trigger the game.
      startButton.addEventListener("click", startGame);
@@ -35,6 +40,9 @@ document.addEventListener("DOMContentLoaded", () => {
           //tracking the players many attempts
           let attempts = 0;
           let maxAttempts = 7; // limiting guesses to 7
+
+          // storing previous guesses for later display.
+          let guessHistory = []
      
           // function for the user input and handling the game logic
           function playGame() {
@@ -54,6 +62,9 @@ document.addEventListener("DOMContentLoaded", () => {
                          alert("🤡")
                          return
                     };
+
+                    // converting the input to an integer
+                    uGuess = parseInt(uGuess, 10);
      
                     // check if it's a valid number between 1 and 100
                     if (isNaN(uGuess) || uGuess < 1 || uGuess > 100) {
@@ -64,6 +75,12 @@ document.addEventListener("DOMContentLoaded", () => {
      
                     // incrementing the attempts
                     attempts++
+
+                    // previous guesses get stored in guess history array!
+                    guessHistory.push(uGuess);
+
+                    // update webpage with the guessing information
+                    updateDOM(uGuess)
      
                     // check if the guess is correct
                     if (uGuess === ranNum) {
@@ -79,9 +96,18 @@ document.addEventListener("DOMContentLoaded", () => {
           }
      
           // updating the DOM with game progress using function
-          
+          function updateDOM(guess) {
+               // final guess of player
+               document.getElementById("message").textContent = `Final Guess: ${guess}`;
+
+               // update guess history display with all the guesses!
+               document.getElementById("guessHistory").textContent = guessHistory.join(", ");
+          }
+
+          // start the guessing process
+          playGame();
      }
-})
+});
 
 
 
