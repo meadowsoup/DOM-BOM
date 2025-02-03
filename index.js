@@ -35,7 +35,7 @@ function startGame() {
      let maxAttempts = 7; // limiting guesses to 7
 
      // function for the user input and handling the game logic
-     function askForGuess() {
+     function playGame() {
           // ending the game if the number of attempts exceed the max
           if (attempts >= maxAttempts) {
                alert(`😭Game Over😭 ... The number was ${ranNum}.`);
@@ -48,7 +48,32 @@ function startGame() {
                let uGuess = window.prompt("Enter a number between 1 and 100:");
 
                // we're gonna exit the game if the player clicks cancel
-          })
+               if (uGuess === null) {
+                    alert("🤡")
+                    return
+               };
+
+               // check if it's a valid number between 1 and 100
+               if (isNaN(uGuess) || uGuess < 1 || uGuess > 100) {
+                    alert("👹Enter a valid # between 1 and 100👹");
+                    playGame(); // ask again if invalid.
+                    return;
+               }
+
+               // incrementing the attempts
+               attempts++
+
+               // check if the guess is correct
+               if (uGuess === ranNum) {
+                    alert("Congrats🎊! You guessed correctly👍🏽")
+               } else if (uGuess > ranNum) {
+                    alert("⬆️too large, try again!")
+                    playGame();
+               } else {
+                    alert("⬇️too small, try again!")
+                    playGame();
+               }
+          }, 100); // delaying for better game experience!
      }
 }
 // const ranNum = Math.floor(Math.random() * 100) + 1;
