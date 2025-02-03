@@ -15,7 +15,13 @@ startButton.textContent = "Start!";
 
 // creating an empty paragraph[p] to display game messages!
 const message = document.createElement("p")
-message.setAttribute("id", "message");
+message.setAttribute("id", "message"); // assign an ID for selections
+
+// appending all elements to the div container inside the HTML!
+app.appendChild(title);
+app.appendChild(instructions);
+app.appendChild(startButton);
+app.appendChild(message);
 
 // const ranNum = Math.floor(Math.random() * 100) + 1;
 // let attempts = 7;
