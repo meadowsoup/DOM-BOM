@@ -86,10 +86,10 @@ document.addEventListener("DOMContentLoaded", () => {
                     if (uGuess === ranNum) {
                          alert("Congrats🎊! You guessed correctly👍🏽")
                     } else if (uGuess > ranNum) {
-                         alert("⬆️too large, try again!")
+                         alert("⬆too large, try again!")
                          playGame();
                     } else {
-                         alert("⬇️too small, try again!")
+                         alert("⬇too small, try again!")
                          playGame();
                     }
                }, 100); // delaying for better game experience!
