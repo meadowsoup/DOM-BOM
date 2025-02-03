@@ -1,16 +1,21 @@
+// selecting the div called "app" from the HTML to insert it's elements
 const app = document.getElementById("app");
 
+// creating the games title
 const title = document.createElement("h1")
 title.textContent = "Take a Guess!";
 
+// creating the users instructions!
 const instructions = document.createElement("p")
 instructions.textContent = "Number between 1 and 100, any guesses?";
 
+// creating the games "start" button
 const startButton = document.createElement("button")
 startButton.textContent = "Start!";
 
+// creating an empty paragraph[p] to display game messages!
 const message = document.createElement("p")
-
+message.setAttribute("id", "message");
 
 // const ranNum = Math.floor(Math.random() * 100) + 1;
 // let attempts = 7;
