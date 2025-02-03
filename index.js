@@ -17,12 +17,40 @@ startButton.textContent = "Start!";
 const message = document.createElement("p")
 message.setAttribute("id", "message"); // assign an ID for selections
 
-// appending all elements to the div container inside the HTML!
+// adding these elements to the div container inside the HTML!
 app.appendChild(title);
 app.appendChild(instructions);
 app.appendChild(startButton);
 app.appendChild(message);
 
+// attaching an event listener to the "start button" to trigger the game.
+startButton.addEventListener("click", startGame);
+
+function startGame() {
+     // generate a random number between 1 and 100
+     let ranNum = Math.floor(Math.random() * 100) + 1;
+
+     //tracking the players many attempts
+     let attempts = 0;
+     let maxAttempts = 7; // limiting guesses to 7
+
+     // function for the user input and handling the game logic
+     function askForGuess() {
+          // ending the game if the number of attempts exceed the max
+          if (attempts >= maxAttempts) {
+               alert(`😭Game Over😭 ... The number was ${ranNum}.`);
+               return;
+          }
+
+          // trying to prevent browser blocking which is optional using setTimeout!
+          setTimeout(() => {
+               // prompt for the players guess
+               let uGuess = window.prompt("Enter a number between 1 and 100:");
+
+               // we're gonna exit the game if the player clicks cancel
+          })
+     }
+}
 // const ranNum = Math.floor(Math.random() * 100) + 1;
 // let attempts = 7;
 
